@@ -2,6 +2,7 @@ package database
 
 import (
 	"log"
+	"rest_api/models"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -32,7 +33,7 @@ func ConnecDb() {
 	db.Logger = logger.Default.LogMode(logger.Info)
 
 	log.Println("running migration")
-	db.AutoMigrate()
+	db.AutoMigrate(models.Product{})
 
 	Db = DbInstance{
 		DB: db,
