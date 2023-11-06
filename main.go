@@ -21,6 +21,13 @@ func main() {
 	// make a route and handlers
 	SetupRoutes(app)
 
+	// 404 handler
+	app.Use(func(c *fiber.Ctx) error {
+		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
+			"status": "route not found",
+		}) // => 404 "Not Found"
+	})
+
 	// make a connection server.
 	log.Fatal(app.Listen(":3000"))
 
