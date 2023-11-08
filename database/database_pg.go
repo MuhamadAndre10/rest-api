@@ -33,6 +33,9 @@ func ConnecDb() {
 	db.Logger = logger.Default.LogMode(logger.Info)
 
 	log.Println("running migration")
+
+	// db.Migrator().DropTable(models.Product{})
+
 	db.AutoMigrate(models.Product{})
 
 	Db = DbInstance{

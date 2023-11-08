@@ -10,7 +10,7 @@ import (
 type Product struct {
 	gorm.Model
 
-	ID           string `json:"id"`
+	ID           string `gorm:"type:VARCHAR(50);primary key" json:"id"`
 	ProductName  string `json:"product_name"`
 	Type         string `json:"type"`
 	ProductImage string `json:"product_image"`

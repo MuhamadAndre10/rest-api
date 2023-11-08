@@ -73,9 +73,7 @@ func DeleteProduct(c *fiber.Ctx) error {
 
 	idParams := c.Params("id")
 
-	go func() {
-		database.Db.DB.Delete(&product, idParams)
-	}()
+	database.Db.DB.Delete(&product, idParams)
 
 	return c.Status(200).JSON(fiber.Map{
 		"message": "Success Delete Products",
